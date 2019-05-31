@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     #@user.music_libraries.each do |xxx|
     #  Rails.logger.debug("Belong_to:#{xxx.title}")
     #end
-    Rails.logger.debug("@user:#{@user.inspect}")
     user_arr = []
     if @user.present?
       user_arr = [@user]
@@ -33,12 +32,14 @@ class UsersController < ApplicationController
   def create
     json_request = JSON.parse(request.body.read)
 Rails.logger.debug("POST-1:#{json_request[0].inspect}")
-Rails.logger.debug("POST-2:#{json_request[1][0].inspect}")
 
      @user = User.new(json_request[0])
-     json_request[1].each do |m_list|
+     if json_request[1].present?
+Rails.logger.debug("POST-2:#{json_request[1].inspect}")
+       json_request[1].each do |m_list|
 Rails.logger.debug("POST-3:#{m_list}")
-       @user.music_libraries.build(m_list)
+         @user.music_libraries.build(m_list)
+       end
      end
 
     if @user.save
