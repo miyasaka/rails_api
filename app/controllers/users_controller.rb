@@ -62,7 +62,7 @@ Rails.logger.debug("POST-3:#{m_list}")
 
   # DELETE /users/1
   def destroy
-    @user.destroy
+    @user.destroy if @user.present?
   end
 
   private
