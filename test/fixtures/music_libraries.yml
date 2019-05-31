@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: MyString
+  words_by: MyString
+  music_by: MyString
+  released: 2019-05-27
+
+two:
+  user_id: 1
+  title: MyString
+  words_by: MyString
+  music_by: MyString
+  released: 2019-05-27
