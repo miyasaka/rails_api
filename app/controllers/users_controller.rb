@@ -18,8 +18,8 @@ class UsersController < ApplicationController
     user_arr = []
     if @user.present?
       user_arr = [@user]
-      music_arr = @user.music_libraries
-      #Rails.logger.debug("Merge-x:#{user_arr.push(music_arr).to_json}")
+      music_arr = @user.music_libraries.order('album,turn')
+      #Rails.logger.debug("Merge-x:#{music_arr.inspect}")
       #render json: user_arr.push(music_arr).to_json
       user_arr.push(music_arr).to_json
     end

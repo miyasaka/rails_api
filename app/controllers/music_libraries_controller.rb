@@ -3,7 +3,7 @@ class MusicLibrariesController < ApplicationController
 
   # GET /music_libraries
   def index
-    @music_libraries = MusicLibrary.all
+    @music_libraries = MusicLibrary.all.order(:album,:turn)
 
     render json: @music_libraries
   end
@@ -51,6 +51,6 @@ Rails.logger.debug("request:#{request.inspect}")
 
     # Only allow a trusted parameter "white list" through.
     def music_library_params
-      params.require(:music_library).permit(:user_id, :title, :words_by, :music_by, :released, :album)
+      params.require(:music_library).permit(:user_id, :title, :words_by, :music_by, :released, :album, :turn)
     end
 end
